@@ -1,0 +1,106 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+h2, p{
+  margin-bottom: 20px;
+}
+
+p code{
+  background-color: #e5e5e5;
+  padding: 3px;
+}
+
+body{
+  font-family: 'Roboto', sans-serif;
+}
+
+
+nav ul{
+  list-style-type: none;
+}
+
+pre{
+  /* position: relative; */
+  /* right: 50px; */
+}
+
+.nav-link{
+  text-decoration: none;
+}
+
+.codebox{
+  background-color: #e5e5e5;
+  border: 1px solid #b5b5b5;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.content li{
+  margin-left: 50px;
+  margin-bottom: 10px;
+}
+
+.section{
+  margin-top: 30px;
+
+}
+
+.brand{
+  padding: 10px 25px;
+}
+
+.section li{
+  border-top: 1px solid rgba(120, 120, 120, 1);
+  border-spacing: 0;
+  padding: 10px 30px;
+}
+
+.navs{
+  width: auto;
+  height: 250px;
+  overflow-y: scroll;
+
+   /* only works in firefox */
+  /* scrollbar-color: rebeccapurple green;
+  scrollbar-width: thin; */
+  border-bottom: 2px solid rgba(120, 120, 120, 1);
+}
+
+.content{
+  margin-top: 20px;
+  margin-left: 15px;
+}
+
+@media (min-width: 850px) {
+
+  .container{
+    display: grid;
+    grid-template-columns: 25% 75%;
+  }
+
+  .navs{
+    border-right: 2px solid rgba(180, 180, 180, 1);
+    padding: 20px 0 20px 0;
+    width: 300px;
+    height: 550px;
+    overflow-y: scroll;
+    position: sticky;
+    top:0;
+
+     /* only works in firefox */
+    /* scrollbar-color: rebeccapurple green;
+    scrollbar-width: thin; */
+  }
+
+  .content{
+    margin-left: 10px;
+    padding: 20px 20px 20px 20px;
+
+  }
+
+
+
+}

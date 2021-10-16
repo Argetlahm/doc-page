@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Doc page</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container">
+      <nav class="navs" id="navbar">
+
+        <header class="brand">
+          <h1>Mongoose Doc</h1>
+        </header>
+        <ul class="section">
+          <li>
+            <a class="nav-link" href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a class="nav-link" href="#getting_started">Getting Started</a>
+          </li>
+          <li>
+            <a class="nav-link" href="#schemas">Schemas</a>
+          </li>
+          <li>
+            <a class="nav-link" href="#connections">Connections</a>
+          </li>
+          <li>
+            <a class="nav-link" href="#models">Models</a>
+          </li>
+          
+        </ul>
+
+      </nav>
+      <main class="content" id="main-doc">
+        <section class="main-section" id="introduction">
+          <header>
+            <h2>Introduction</h2>
+          </header>
+
+          <p>Mongoose guides provide detailed tutorials on Mongoose's core concepts and integrating Mongoose with external tools and frameworks.</p>
+
+        </section>
+        <section  class="main-section" id="getting_started">
+          <header>
+            <h2>Getting Started</h2>
+          </header>
+
+          <p>This guide assumes you have the following basic background:
+            <ul>
+              <li>A general understanding of the Internet and the World Wide Web (WWW).</li>
+              <li>Good working knowledge of HyperText Markup Language (HTML).</li>
+              <li>Some programming experience. If you are new to programming, try one of the tutorials linked on the main page about MongoDB.</li>
+            </ul>
+          </p>
+        </section>
+
+
+        <section class="main-section" id="schemas">
+          <header>
+            <h2>Schemas</h2>
+          </header>
+          <p>You can think of a Mongoose schema as the configuration object for a Mongoose model. A SchemaType is then a configuration object for an individual property. A SchemaType says what type a given path should have, whether it has any getters/setters, and what values are valid for that path.</p>
+          <div class="codebox">
+          <pre><code class="language-javascript">
+      const schema = new Schema({ name: String });
+      schema.path('name') instanceof mongoose.SchemaType; // true
+      schema.path('name') instanceof mongoose.Schema.Types.String; // true
+      schema.path('name').instance; // 'String'
+            </code>
+          </pre>
+          </div>
+          <p>A SchemaType is different from a type. In other words, <code>mongoose.ObjectId !== mongoose.Types.ObjectId</code>. A SchemaType is just a configuration object for Mongoose. An instance of the <code>mongoose.ObjectId</code> SchemaType doesn't actually create MongoDB ObjectIds, it is just a configuration for a path in a schema.</p>
+          <p>The permitted SchemaTypes are:</p>
+          <ul>
+            <li>String</li>
+            <li>Number</li>
+            <li>Date</li>
+            <li>Buffer</li>
+            <li>Boolean</li>
+            <li>Mixed</li>
+            <li>ObjectId</li>
+          </ul>
+        </section>
+
+        <section class="main-section" id="connections">
+          <header>
+            <h2>Connections</h2>
+          </header>
+
+
+          <p>You can connect to MongoDB with the <code>mongoose.connect()</code> method.</p>
+          <div class="codebox">
+            <pre><code class="language-javascript">
+      mongoose.connect('mongodb://localhost:27017/myapp');
+            </code></pre>
+          </div>
+          <p>This is the minimum needed to connect the <code>myapp</code> database running locally on the default port (27017). If connecting fails on your machine, try using <code>127.0.0.1</code> instead of <code>localhost</code>.</p>
+          <p>You can also specify several more parameters in the <code>uri</code>:</p>
+          <div class="codebox">
+            <pre><code class="language-javascript">
+      mongoose.connect('mongodb://username:password@host:port/database?options...');
+            </code></pre>
+          </div>
+        </section>
+        <section class="main-section" id="models">
+          <header>
+            <h2>Models</h2>
+          </header>
+
+          <p>Models are fancy constructors compiled from Schema definitions. An instance of a model is called a document. Models are responsible for creating and reading documents from the underlying MongoDB database.</p>
+          <p>When you call <code>mongoose.model()</code> on a schema, Mongoose compiles a model for you.</p>
+          <div class="codebox">
+          <pre><code class="language-javascript">
+      const schema = new mongoose.Schema({ name: 'string', size: 'string' });
+      const Tank = mongoose.model('Tank', schema);
+          </code></pre>
+          </div>
+          <p>The first argument is the singular name of the collection your model is for. <strong>Mongoose automatically looks for the plural, lowercased version of your model name.</strong> Thus, for the example above, the model Tank is for the <strong>tanks</strong> collection in the database.</p>
+          <p><strong>Note:</strong> The <code>.model()</code> function makes a copy of <code>schema</code>. Make sure that you've added everything you want to <code>schema</code>, including hooks, before calling <code>.model()</code>!</p>
+        </section>
+
+      </div>
+
+    </main>
+
+  <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js">
+  </script>
+  </body>
+</html>
